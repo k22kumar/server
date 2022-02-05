@@ -1,9 +1,10 @@
 const express = require('express');
+// order of require statements matter! User creates the model and passport imports it
+require('./models/User');
 require('./services/passport');
 const mongoose = require('mongoose');
 const keys = require('./config/keys');
 // Creates a new express application
-// Sets up configs with app
 const app = express();
 
 require('./routes/authRoutes')(app);
