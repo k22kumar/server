@@ -10,7 +10,7 @@ module.exports = app => {
     
     app.get('/auth/google/callback', passport.authenticate('google'));
     // logout route
-    application.get('/api/logout', (req, res) => {
+    app.get("/api/logout", (req, res) => {
         // kills the cookie
         req.logout();
         // create a res that sends null back
@@ -18,6 +18,6 @@ module.exports = app => {
     });
     // verify user is logged in
     app.get('/api/current_user', (req, res) => {
-        res.send((req.user));
+        res.send(req.user);
     });
 };
