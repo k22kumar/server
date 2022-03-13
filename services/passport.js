@@ -32,15 +32,13 @@ passport.use(
         .then((existingUser) => {
             if (existingUser) {
                 // we already have a record
-                done(null,existingUser);
+                done(null, existingUser);
             } else {
                 // Creates a new model instance
                 new User({ googleId: profile.id })
                 .save()
-                .then(user => {
-                    // Always take the user that is recieved from the DB
-                    done(null,user);
-                });
+                // Always take the user that is recieved from the DB
+                .then(user => done(null,user))
             }
         });
     })
